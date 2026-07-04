@@ -1,0 +1,232 @@
+/* ============================================
+   PokeMMO Adventure Basics - Responsive Layout
+   Google Fonts: Nunito (headings) + Source Sans 3 (body)
+   ============================================ */
+
+/* --- Base Typography --- */
+
+body {
+  font-family: 'Source Sans 3', Arial, sans-serif;
+  font-size: 16px;
+  background-color: #f7fbff;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  color: #2d6a2e;
+  padding-bottom: 0.4em;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+p {
+  color: #334155;
+  font-size: 1em;
+  margin-bottom: 1.4em;
+  line-height: 1.8;
+}
+
+strong {
+  color: #2d6a2e;
+}
+
+em {
+  color: #6b7280;
+}
+
+
+/* --- Grid Layout (Desktop: 3-column) --- */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "heady   heady   heady"
+    "navvy   navvy   navvy"
+    "aside1  mainy   aside2"
+    "footy   footy   footy";
+}
+
+header  { grid-area: heady; }
+nav     { grid-area: navvy; }
+main    { grid-area: mainy; }
+#aside1 { grid-area: aside1; }
+#aside2 { grid-area: aside2; }
+footer  { grid-area: footy; }
+
+
+/* --- Section Styling --- */
+
+header, nav, main, aside, footer {
+  padding: 1.5em;
+}
+
+header {
+  background-color: #dcfce7;
+  text-align: center;
+  border-bottom: 3px solid #2d6a2e;
+}
+
+footer {
+  background-color: #dcfce7;
+  text-align: center;
+  border-top: 2px solid #cbd5e1;
+}
+
+footer small {
+  color: #4b5563;
+  font-size: 0.9em;
+}
+
+main {
+  background-color: #ffffff;
+}
+
+#aside1 {
+  background-color: #fef9ee;
+  border-right: 1px solid #e5e7eb;
+}
+
+#aside2 {
+  background-color: #f0f0ff;
+  border-left: 1px solid #e5e7eb;
+}
+
+
+/* --- Navigation (Flexbox) --- */
+
+nav {
+  background-color: #f0fdf4;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+nav ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #2d6a2e;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #bbf7d0;
+  outline: 2px solid #2d6a2e;
+  outline-offset: 2px;
+}
+
+
+/* --- Content Lists (scoped to main & aside only) --- */
+
+aside ul, main ul {
+  border: 3px dashed orange;
+  padding: 12px 32px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+aside ol, main ol {
+  border: 3px solid purple;
+  padding: 12px 32px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+
+/* =============================================
+   TABLET: 641px - 900px (2-column layout)
+   ============================================= */
+
+@media screen and (min-width: 641px) and (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "heady  heady"
+      "navvy  navvy"
+      "mainy  mainy"
+      "aside1 aside2"
+      "footy  footy";
+  }
+
+  #aside1 {
+    border-right: 1px solid #e5e7eb;
+    border-left: none;
+  }
+
+  #aside2 {
+    border-left: 1px solid #e5e7eb;
+    border-right: none;
+  }
+}
+
+
+/* =============================================
+   MOBILE: 640px and below (single-column)
+   ============================================= */
+
+@media screen and (max-width: 640px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heady"
+      "mainy"
+      "aside1"
+      "aside2"
+      "navvy"
+      "footy";
+  }
+
+  nav ul {
+    flex-flow: column nowrap;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 1px solid #2d6a2e;
+    background-color: white;
+    border-radius: 6px;
+  }
+
+  #aside1, #aside2 {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+}
